@@ -1,18 +1,22 @@
 <script setup>
-import {ref,reactive,toRef,toRefs} from "vue";
-const count = ref(0);
-const user = reactive({firstName:"pascale",lastName:"lacroix"});
-const testToRef=toRef(count);
-const prenom=toRef(user.firstName);
-const user2=toRefs(user)
+    import {ref,computed,reactive} from 'vue';
+    const price=ref(100);
+    const user = reactive({firstName:"pascale",lastName:"lacroix"});
+    const priceTva=computed(()=>(price.value * 1.21).toFixed(2));
+    const fullname=computed({
+        get(){
+            return user.firstName+" "+user.lastName;}, 
+        set(data){
+            [user.firstName,user.lastName]=data.split(" ");}
+        });
 </script>
 <template>
-    <h2>coucou</h2>
-    <div><button @click="count--">-</button> {{ count }} <button @click="count++">+</button> </div>
-    <div v-for="item in count" :key="item">{{ item }}</div>
-    <div>{{user.firstName}} {{user.lastName}}</div>
-    <div>{{ testToRef }}</div>
-    <div>{{ prenom }}</div>
-    <div>{{ user2.firstName }}</div>
+    <h2>Test computed</h2>
+    <div>Price: {{price}}- tvac price: {{priceTva}}</div>
+    <div>{{ user.firstName }}</div>
+    <div>{{ fullname }}</div>
+    <input type="text" v-model="fullname">
 </template>
-<style scoped></style>
+<style scoped>
+
+</style>
