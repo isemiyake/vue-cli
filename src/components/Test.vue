@@ -1,11 +1,8 @@
 <script setup>
- const emit = defineEmits(['monEvenement','messageChanged']);
+defineProps(['parentValue'])//ref(coucou)
 </script>
 <template>
-  <h2>template test</h2>
-  <div><button @click="emit('monEvenement','message 2')">emit</button></div>
-    <div><button @click="emit('messageChanged','Genial!')">edit</button></div>
-
+  <div><input type="text" :value="parentValue" @input="$emit('valueChanged',$event.target.value)"></div>
 </template>
 <style>
 
