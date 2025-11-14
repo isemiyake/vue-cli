@@ -1,9 +1,12 @@
 <script setup>
-import { inject } from 'vue';
-const theme = inject("theme")
+ const emit = defineEmits(['monEvenement','messageChanged']);
 </script>
 <template>
-   <div>{{ theme }}   <input type="text" v-model="theme"></div>
+  <h2>template test</h2>
+  <div><button @click="emit('monEvenement','message 2')">emit</button></div>
+    <div><button @click="emit('messageChanged','Genial!')">edit</button></div>
 
 </template>
-<style></style>
+<style>
+
+</style>

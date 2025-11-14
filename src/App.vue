@@ -1,13 +1,20 @@
 <script setup>
-import ThemProvider from "./components/ThemProvider.vue";
-import Test from "./components/Test.vue";
+import {ref} from 'vue';
+import Test from "./components/Test.vue"
+const message = ref("Coucou");
+const functionTest= (data)=>{
+    alert(data);
+}
+const changeMessage=(data)=>{
+  message.value=data;
+}
 </script>
 
 <template>
-<them-provider>
-  <h1>Test provider-inject</h1>
-  <test />
-</them-provider>
+  <h1>{{ message }}</h1>
+  <test @mon-evenement="functionTest" @message-changed="changeMessage"/>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
