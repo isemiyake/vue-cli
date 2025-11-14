@@ -1,15 +1,12 @@
 <script setup>
-import {ref} from 'vue';
-import Test from "./components/Test.vue"
-const message = ref("Coucou");
-
+import componentA from './components/componentA.vue';
+import componentB from './components/componentB.vue';
 </script>
 
 <template>
-  <h1>{{ message }}</h1>
-  <div>
-    <test :parent-value="message" @value-changed="(data)=>(message=data)"/>
-    </div>
+  <h1>test store</h1>
+  <component-a />
+  <component-b />
 </template>
 
 <style scoped>
